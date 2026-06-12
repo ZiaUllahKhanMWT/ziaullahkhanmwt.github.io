@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zia Ullah Khan — Academic Writer & Research Scholar</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a2e;
+    --paper: #f7f5f0;
+    --accent: #2d6a4f;
+    --accent-light: #52b788;
+    --muted: #6b6b80;
+    --rule: #d4cfc5;
+    --white: #ffffff;
+    --highlight: #e9f5ee;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.2rem 4rem;
+    background: rgba(247,245,240,0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--rule);
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 72px;
+  }
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 6rem 4rem 6rem 4rem;
+    border-right: 1px solid var(--rule);
+  }
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+  }
+  .hero-name {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 5vw, 4.5rem);
+    font-weight: 700;
+    line-height: 1.08;
+    margin-bottom: 1rem;
+    color: var(--ink);
+  }
+  .hero-name em {
+    font-style: italic;
+    color: var(--accent);
+  }
+  .hero-tagline {
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: var(--muted);
+    max-width: 420px;
+    margin-bottom: 2.5rem;
+    line-height: 1.8;
+  }
+  .hero-stats {
+    display: flex;
+    gap: 2.5rem;
+    padding: 1.5rem 0;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 2.5rem;
+  }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--accent);
+    display: block;
+  }
+  .stat-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+  }
+  .hero-cta {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+  }
+  .btn {
+    padding: 0.75rem 1.8rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    border-radius: 3px;
+    transition: all 0.2s;
+    cursor: pointer;
+    border: none;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: var(--white);
+  }
+  .btn-primary:hover { background: #1f5038; }
+  .btn-outline {
+    background: transparent;
+    color: var(--accent);
+    border: 1.5px solid var(--accent);
+  }
+  .btn-outline:hover { background: var(--highlight); }
+
+  .hero-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 6rem 4rem;
+    background: var(--white);
+  }
+  .expertise-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 2rem;
+  }
+  .expertise-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.2rem;
+    padding: 1.2rem 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .expertise-item:first-of-type { border-top: 1px solid var(--rule); }
+  .exp-icon {
+    width: 36px; height: 36px;
+    background: var(--highlight);
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    font-size: 1.1rem;
+  }
+  .exp-title {
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-bottom: 0.25rem;
+  }
+  .exp-desc {
+    font-size: 0.82rem;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* ── SECTIONS ── */
+  section { padding: 6rem 4rem; }
+  .section-inner { max-width: 1100px; margin: 0 auto; }
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 1.5rem;
+    margin-bottom: 3.5rem;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 1.5rem;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+  }
+  .section-count {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+  }
+
+  /* ── ABOUT ── */
+  #about { background: var(--white); }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: 5rem;
+    align-items: start;
+  }
+  .about-credentials {}
+  .cred-item {
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .cred-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.3rem;
+  }
+  .cred-value {
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+  .about-bio p {
+    margin-bottom: 1.2rem;
+    font-size: 1rem;
+    line-height: 1.85;
+    color: #333;
+  }
+  .about-links { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem; }
+  .link-badge {
+    padding: 0.4rem 1rem;
+    background: var(--highlight);
+    border: 1px solid var(--accent-light);
+    border-radius: 2px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--accent);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    transition: background 0.2s;
+  }
+  .link-badge:hover { background: #c6e8d5; }
+
+  /* ── PUBLICATIONS ── */
+  #publications { background: var(--paper); }
+  .pub-list { display: flex; flex-direction: column; gap: 1.5rem; }
+  .pub-card {
+    background: var(--white);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--accent);
+    padding: 1.5rem 2rem;
+    transition: box-shadow 0.2s;
+  }
+  .pub-card:hover { box-shadow: 0 4px 20px rgba(45,106,79,0.08); }
+  .pub-meta {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 0.6rem;
+    flex-wrap: wrap;
+  }
+  .pub-year {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    background: var(--highlight);
+    color: var(--accent);
+    padding: 0.2rem 0.6rem;
+    border-radius: 2px;
+    font-weight: 600;
+  }
+  .pub-journal {
+    font-size: 0.78rem;
+    color: var(--muted);
+    font-style: italic;
+  }
+  .pub-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    font-weight: 400;
+    line-height: 1.5;
+    margin-bottom: 0.5rem;
+    color: var(--ink);
+  }
+  .pub-authors {
+    font-size: 0.78rem;
+    color: var(--muted);
+  }
+  .pub-authors strong { color: var(--accent); }
+
+  /* ── SERVICES ── */
+  #services { background: var(--ink); color: var(--paper); }
+  #services .section-title { color: var(--paper); }
+  #services .section-count { color: var(--accent-light); }
+  #services .section-header { border-color: rgba(255,255,255,0.1); }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5px;
+    background: rgba(255,255,255,0.08);
+  }
+  .service-card {
+    background: var(--ink);
+    padding: 2.5rem 2rem;
+    transition: background 0.2s;
+  }
+  .service-card:hover { background: #22223b; }
+  .service-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    color: var(--accent-light);
+    margin-bottom: 1rem;
+  }
+  .service-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    margin-bottom: 0.75rem;
+    color: var(--paper);
+  }
+  .service-desc {
+    font-size: 0.85rem;
+    color: #9d9db0;
+    line-height: 1.75;
+  }
+
+  /* ── SKILLS ── */
+  #skills { background: var(--white); }
+  .skills-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+  }
+  .skill-group-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.2rem;
+  }
+  .skill-tag {
+    display: inline-block;
+    padding: 0.35rem 0.85rem;
+    margin: 0.3rem;
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    font-size: 0.8rem;
+    color: var(--ink);
+    background: var(--paper);
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .skill-tag:hover { border-color: var(--accent); background: var(--highlight); }
+
+  /* ── CONTACT ── */
+  #contact { background: var(--paper); }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+  .contact-info p {
+    font-size: 1rem;
+    color: var(--muted);
+    line-height: 1.8;
+    margin-bottom: 2rem;
+  }
+  .contact-links { display: flex; flex-direction: column; gap: 1rem; }
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: var(--white);
+    border: 1px solid var(--rule);
+    text-decoration: none;
+    color: var(--ink);
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .contact-link:hover { border-color: var(--accent); background: var(--highlight); color: var(--accent); }
+  .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+  .contact-form input, .contact-form textarea {
+    padding: 0.9rem 1.1rem;
+    border: 1px solid var(--rule);
+    background: var(--white);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    color: var(--ink);
+    outline: none;
+    transition: border-color 0.2s;
+    resize: none;
+  }
+  .contact-form input:focus, .contact-form textarea:focus {
+    border-color: var(--accent);
+  }
+  .contact-form textarea { min-height: 130px; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink);
+    color: rgba(255,255,255,0.4);
+    text-align: center;
+    padding: 2rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.05em;
+  }
+  footer a { color: var(--accent-light); text-decoration: none; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-right { border-top: 1px solid var(--rule); padding: 3rem 1.5rem; }
+    .hero-left { padding: 5rem 1.5rem 3rem; }
+    section { padding: 4rem 1.5rem; }
+    .about-grid, .contact-grid, .skills-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .services-grid { grid-template-columns: 1fr; }
+    .hero-stats { gap: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">Zia Ullah Khan</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#publications">Research</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-left">
+    <p class="eyebrow">PhD Scholar · Kohat University of Science &amp; Technology</p>
+    <h1 class="hero-name">Zia Ullah<br><em>Khan</em></h1>
+    <p class="hero-tagline">Academic writer, research scholar, and business plan specialist bridging rigorous inquiry with real-world strategy.</p>
+    <div class="hero-stats">
+      <div>
+        <span class="stat-num">6+</span>
+        <span class="stat-label">Publications</span>
+      </div>
+      <div>
+        <span class="stat-num">3+</span>
+        <span class="stat-label">Years Research</span>
+      </div>
+      <div>
+        <span class="stat-num">PhD</span>
+        <span class="stat-label">Scholar, KUST</span>
+      </div>
+    </div>
+    <div class="hero-cta">
+      <a href="#contact" class="btn btn-primary">Work With Me</a>
+      <a href="#publications" class="btn btn-outline">View Research</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <p class="expertise-label">Areas of Expertise</p>
+    <div class="expertise-item">
+      <div class="exp-icon">📝</div>
+      <div>
+        <div class="exp-title">Academic Writing</div>
+        <div class="exp-desc">Research papers, literature reviews, theses, and journal articles crafted to publication standards.</div>
+      </div>
+    </div>
+    <div class="expertise-item">
+      <div class="exp-icon">🔬</div>
+      <div>
+        <div class="exp-title">Quantitative Research</div>
+        <div class="exp-desc">PLS-SEM, survey-based studies, and statistical analysis across business and social science domains.</div>
+      </div>
+    </div>
+    <div class="expertise-item">
+      <div class="exp-icon">📊</div>
+      <div>
+        <div class="exp-title">Business Plan Writing</div>
+        <div class="exp-desc">Comprehensive, investor-ready business plans grounded in market research and financial analysis.</div>
+      </div>
+    </div>
+    <div class="expertise-item">
+      <div class="exp-icon">📢</div>
+      <div>
+        <div class="exp-title">Digital Marketing Research</div>
+        <div class="exp-desc">Social media advertising, consumer behaviour, and e-commerce buying behaviour studies.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="section-header">
+      <h2 class="section-title">About</h2>
+      <span class="section-count">BACKGROUND & CREDENTIALS</span>
+    </div>
+    <div class="about-grid">
+      <div class="about-credentials">
+        <div class="cred-item">
+          <div class="cred-label">Current Position</div>
+          <div class="cred-value">PhD Scholar, Kohat University of Science & Technology</div>
+        </div>
+        <div class="cred-item">
+          <div class="cred-label">Location</div>
+          <div class="cred-value">Khyber Pakhtunkhwa, Pakistan</div>
+        </div>
+        <div class="cred-item">
+          <div class="cred-label">Research Interests</div>
+          <div class="cred-value">Marketing, Social Media, Entrepreneurship, Organisational Behaviour</div>
+        </div>
+        <div class="cred-item">
+          <div class="cred-label">Freelance Platform</div>
+          <div class="cred-value">Upwork — Active Profile</div>
+        </div>
+        <div class="cred-item">
+          <div class="cred-label">Email</div>
+          <div class="cred-value">Verified at researchbuff.com</div>
+        </div>
+      </div>
+      <div class="about-bio">
+        <p>I am a PhD scholar at Kohat University of Science and Technology, with a research background spanning digital marketing, consumer behaviour, entrepreneurship, and organisational psychology. My published work appears in peer-reviewed journals across management and social sciences.</p>
+        <p>Beyond academia, I am an experienced academic writer and business plan developer. I help students, researchers, and entrepreneurs transform complex ideas into polished, publication-ready documents — whether that means a journal article, a thesis chapter, or a full investor-ready business plan.</p>
+        <p>With a strong grasp of quantitative research methods — including PLS-SEM and structural equation modelling — I bring both analytical rigour and clear writing to every project I take on.</p>
+        <div class="about-links">
+          <a href="https://scholar.google.com/citations?user=VTmHe-kAAAAJ&hl=en" target="_blank" class="link-badge">Google Scholar ↗</a>
+          <a href="https://www.researchgate.net/profile/Zia-Khan-35/research" target="_blank" class="link-badge">ResearchGate ↗</a>
+          <a href="https://www.upwork.com/freelancers/ziakhan13" target="_blank" class="link-badge">Upwork ↗</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PUBLICATIONS -->
+<section id="publications">
+  <div class="section-inner">
+    <div class="section-header">
+      <h2 class="section-title">Publications</h2>
+      <span class="section-count">SELECTED WORKS</span>
+    </div>
+    <div class="pub-list">
+
+      <div class="pub-card">
+        <div class="pub-meta">
+          <span class="pub-year">2026</span>
+          <span class="pub-journal">ACADEMIA International Journal for Social Sciences</span>
+        </div>
+        <div class="pub-title">Impact of Artificial Intelligence on Fraud Detection in Retail Banking: A Quantitative Study</div>
+        <div class="pub-authors"><strong>Zia Ullah Khan</strong>, Javeed Iqbal Mwt, Ishtiaq Ahmad Bajwa, Muhammad Shehzad, Safdar Marwat</div>
+      </div>
+
+      <div class="pub-card">
+        <div class="pub-meta">
+          <span class="pub-year">2026</span>
+          <span class="pub-journal">Indian Journal of Economics and Business (forthcoming)</span>
+        </div>
+        <div class="pub-title">The Online Buying Behavior in Relation with Facebook Advertising: Measuring the Brand Page "Like" Intention to Get Information as a Mediator</div>
+        <div class="pub-authors"><strong>Zia Ullah Khan</strong>, Hafizullah, Muhammad Kaleem</div>
+      </div>
+
+      <div class="pub-card">
+        <div class="pub-meta">
+          <span class="pub-year">2025</span>
+          <span class="pub-journal">Journal of Social Sciences Review, 5(4), 151–164</span>
+        </div>
+        <div class="pub-title">The Impact of Entrepreneurial Education, Entrepreneurial Alertness, and Entrepreneurial Passion on Entrepreneurial Intentions of University Students in Khyber Pakhtunkhwa, Pakistan</div>
+        <div class="pub-authors">Shah Murad, Javeed Iqbal, Faheem Ahmed, <strong>Zia Ullah Khan</strong>, Nafid Khan</div>
+      </div>
+
+      <div class="pub-card">
+        <div class="pub-meta">
+          <span class="pub-year">2025</span>
+          <span class="pub-journal">ACADEMIA International Journal for Social Sciences, 4(4), 2019–2026</span>
+        </div>
+        <div class="pub-title">Presenteeism and Its Effects on Employee Burnout: Examining the Mediating Role of Burnout on Employee Productivity Loss in Blue-Collar Jobs — A PLS-SEM Model Study</div>
+        <div class="pub-authors">Javeed Iqbal Mwt, Dr Muhammad Siddique, Mahesh Kumar Oad, <strong>Zia Ullah Khan</strong>, Haji Irfan Haider</div>
+      </div>
+
+      <div class="pub-card">
+        <div class="pub-meta">
+          <span class="pub-year">2021</span>
+          <span class="pub-journal">International Journal of Innovation Creativity and Change, 15(5), 247–262</span>
+        </div>
+        <div class="pub-title">The Influence of Attitude Towards Facebook Advertising on Purchase Intention: Brand Page "Like" Intention to Participate in Word of Mouth as a Mediator</div>
+        <div class="pub-authors">Hafizullah, <strong>Zia Ullah Khan</strong>, Muhammad Kaleem, Muhammad Khushnood, Zeeshan, Sammar Abbas</div>
+      </div>
+
+      <div class="pub-card">
+        <div class="pub-meta">
+          <span class="pub-year">2021</span>
+          <span class="pub-journal">Indian Journal of Economics and Business, 20(4)</span>
+        </div>
+        <div class="pub-title">The Online Buying Behavior in Relation with Facebook Advertising: Measuring the Brand Page "Like" Intention to Get Information as a Mediator</div>
+        <div class="pub-authors"><strong>Zia Ullah Khan</strong>, Hafizullah, Muhammad Kaleem</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-inner">
+    <div class="section-header">
+      <h2 class="section-title">Services</h2>
+      <span class="section-count">WHAT I OFFER</span>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-num">01</div>
+        <div class="service-title">Academic Writing</div>
+        <div class="service-desc">Research papers, journal articles, thesis chapters, literature reviews, and research proposals — written to your university's or journal's exact standards.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-num">02</div>
+        <div class="service-title">Business Plan Writing</div>
+        <div class="service-desc">Complete business plans for startups and SMEs — executive summaries, market analysis, financial projections, and operational frameworks tailored for investors or funding bodies.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-num">03</div>
+        <div class="service-title">Quantitative Research & Analysis</div>
+        <div class="service-desc">Survey design, data collection strategy, PLS-SEM modelling, and results interpretation for management and social science research projects.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-num">04</div>
+        <div class="service-title">Editing & Proofreading</div>
+        <div class="service-desc">Grammar, structure, flow, and academic tone — your manuscript polished for submission, whether it's a conference paper or a PhD dissertation.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-num">05</div>
+        <div class="service-title">Research Consulting</div>
+        <div class="service-desc">Topic selection, conceptual framework development, methodology guidance, and theoretical grounding for masters and doctoral students.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-num">06</div>
+        <div class="service-title">Marketing Research</div>
+        <div class="service-desc">Consumer behaviour, social media advertising effectiveness, e-commerce, and digital marketing studies — from conceptualisation to final report.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-inner">
+    <div class="section-header">
+      <h2 class="section-title">Skills & Tools</h2>
+      <span class="section-count">COMPETENCIES</span>
+    </div>
+    <div class="skills-grid">
+      <div>
+        <div class="skill-group-title">Research Methods</div>
+        <span class="skill-tag">PLS-SEM</span>
+        <span class="skill-tag">Structural Equation Modelling</span>
+        <span class="skill-tag">Survey Research</span>
+        <span class="skill-tag">Quantitative Analysis</span>
+        <span class="skill-tag">Mediation Analysis</span>
+        <span class="skill-tag">Literature Review</span>
+        <span class="skill-tag">Conceptual Framework Design</span>
+        <span class="skill-tag">SmartPLS</span>
+        <span class="skill-tag">SPSS</span>
+      </div>
+      <div>
+        <div class="skill-group-title">Writing & Communication</div>
+        <span class="skill-tag">Academic Writing</span>
+        <span class="skill-tag">Business Plan Writing</span>
+        <span class="skill-tag">Journal Article Writing</span>
+        <span class="skill-tag">Research Proposals</span>
+        <span class="skill-tag">Thesis Writing</span>
+        <span class="skill-tag">Technical Editing</span>
+        <span class="skill-tag">APA / Chicago Style</span>
+      </div>
+      <div>
+        <div class="skill-group-title">Subject Domains</div>
+        <span class="skill-tag">Digital Marketing</span>
+        <span class="skill-tag">Social Media Advertising</span>
+        <span class="skill-tag">Consumer Behaviour</span>
+        <span class="skill-tag">Entrepreneurship</span>
+        <span class="skill-tag">Organisational Behaviour</span>
+        <span class="skill-tag">Banking & Finance</span>
+        <span class="skill-tag">HR Management</span>
+        <span class="skill-tag">Artificial Intelligence in Business</span>
+      </div>
+      <div>
+        <div class="skill-group-title">Platforms & Profiles</div>
+        <span class="skill-tag">Google Scholar</span>
+        <span class="skill-tag">ResearchGate</span>
+        <span class="skill-tag">Upwork (Freelancer)</span>
+        <span class="skill-tag">Microsoft Office</span>
+        <span class="skill-tag">Google Docs</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-header">
+      <h2 class="section-title">Get in Touch</h2>
+      <span class="section-count">LET'S WORK TOGETHER</span>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <p>Whether you need a research paper drafted, a business plan developed, or expert guidance on your thesis — I'd love to hear about your project. Reach out through any of the platforms below.</p>
+        <div class="contact-links">
+          <a href="https://www.upwork.com/freelancers/ziakhan13" target="_blank" class="contact-link">
+            <span>💼</span> Hire me on Upwork
+          </a>
+          <a href="https://www.researchgate.net/profile/Zia-Khan-35" target="_blank" class="contact-link">
+            <span>🔬</span> ResearchGate Profile
+          </a>
+          <a href="https://scholar.google.com/citations?user=VTmHe-kAAAAJ&hl=en" target="_blank" class="contact-link">
+            <span>🎓</span> Google Scholar
+          </a>
+        </div>
+      </div>
+      <div>
+        <div class="contact-form">
+          <input type="text" placeholder="Your Name" />
+          <input type="email" placeholder="Your Email" />
+          <input type="text" placeholder="Subject (e.g. Business Plan, Research Paper)" />
+          <textarea placeholder="Tell me about your project…"></textarea>
+          <button class="btn btn-primary" onclick="alert('Thank you! Please reach out via Upwork for a guaranteed response.')">Send Message</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2026 Zia Ullah Khan · PhD Scholar, KUST ·
+  <a href="https://www.upwork.com/freelancers/ziakhan13" target="_blank">Upwork</a> ·
+  <a href="https://scholar.google.com/citations?user=VTmHe-kAAAAJ&hl=en" target="_blank">Google Scholar</a> ·
+  <a href="https://www.researchgate.net/profile/Zia-Khan-35" target="_blank">ResearchGate</a>
+</footer>
+
+</body>
+</html>
